@@ -1,0 +1,11 @@
+DKIM_CANON = relaxed
+DKIM_SELECTOR = mail1
+
+# Get the domain from the outgoing mail.
+DKIM_DOMAIN = ${sg{${lc:${domain:$h_from:}}}{^www\.}{}}
+
+# The file is based on the outgoing domain-name in the from-header.
+DKIM_FILE = /dkim/{DKIM_DOMAIN}.pem
+
+# If key exists then use it, if not don't.
+DKIM_PRIVATE_KEY = ${if exists{DKIM_FILE}{DKIM_FILE}{0}}
