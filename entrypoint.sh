@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-mkdir /etc/exim4/dkim
+mkdir -p /etc/exim4/dkim
 cp /dkim/* /etc/exim4/dkim/
 chgrp -R Debian-exim /etc/exim4/dkim
 chmod -R 640 /etc/exim4/dkim
